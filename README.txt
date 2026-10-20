@@ -1,4 +1,4 @@
-SURE ANALIZI 1.2.0  (Qt / PySide6)   created by EYALTIRIKLI
+SURE ANALIZI 1.3.0  (Qt / PySide6)   created by EYALTIRIKLI
 ==========================================================
 
 Ne yapar: SAP cikti(lar)ini (.xls / .xlsx) okur; solda calisanlar, ustte
@@ -15,28 +15,35 @@ tezgahlar (Work ctr), hucrede o kisinin o tezgaha girdigi sure.
     boyanan girislerin, tabloda gorunen tum girislere orani yazar:
     "%21,7 (13 / 60 giris) · sure %10,7" (sure = o girislerin suresinin
     gorunen toplam sureye orani).  Grup / kisi / tarih filtresine uyar.
-  - VERI YUKLE: yuklu verinin yerine gecer.
-  - VERI EKLE: yuklu verinin UZERINE ekler.  Eklenen dosyada zaten yuklu
-    tarihler varsa sorar: "Yenisi" (o tarihler yeni dosyadan), "Eskisi"
-    (o tarihlerde eski veri kalir), "Ikisi de" (ikisi toplanir - ayni
-    cikti tekrar alindiysa sureler iki kat olur).  Yeni tarihler her
-    durumda eklenir.  Program acilista ayni yukleme / ekleme sirasini
-    tekrar okur.
-  - TEZGAH GRUBU: "Grup listesi yukle" ile Excel secilir - ilk satirda
-    grup adlari (ornek: A1 liechti, C1 makino), altlarinda tezgah
-    numaralari.  Bos sutun / bos satir sorun degil.  Grup secilince
-    yalniz o gruptaki tezgahlar gosterilir, toplamlar da yalniz onlardan.
-    Liste bir kere yuklenir, program hatirlar.
-  - KISILER: istenen kisiler isaretlenir, yalniz onlar gosterilir
-    (x ile kaldirilir).  Secim hatirlanir.
-  - Baslik tiklaninca siralar (Calisan, Yaka no, TOPLAM, gun toplamlari).
-  - Excel'e aktar: ekrandaki tablo, ayni baslik duzeni ve boyamayla.
-  - Son yuklenen dosyalar ve ayarlar acilista hatirlanir.
+  - VERI YUKLE: SAP ciktisi programin yanindaki VERITABANINA yazilir:
+      sure_data.db  (exe ile ayni klasorde; derlenmis halde
+      dist\SURE ANALIZI\sure_data.db).  WIP TRACKER gibi: yuklenen
+    dosyadaki tarihler veritabaninda varsa once silinir, yenisi yazilir -
+    ayni gun iki kez yuklense de iki kat sayilmaz.  Diger tarihler kalir.
+    Yeri ve son yuklemeler: alttaki "Yukleme raporu".  Orada "Tum veriyi
+    sil" de var.  Yeni surume gecerken sure_data.db dosyasini yeni exe'nin
+    yanina kopyalayin, veriler gelir.
+  - PARCA ILERLEMESI (kutu ile acilir/kapanir): tezgah basliginin altinda
+    o gun tezgahta kesilen parca (E sutunu xxxxMYYGxx -> MYY; E bossa ayni
+    seri no'lu (F) baska satirdan; hic yoksa seri no) ve bir cubuk:
+      yesil = o tarihten ONCE o tezgahta o seri + operasyona girilen sure
+      turuncu = O GUN (aralikta) girilen
+      bos = standarda kalan  (standart: parca + operasyon (G sutunu))
+    Sure: makina suresi (O); makina 0 olan giriste o girisin iscilik.
+    O gun ikinci bir seri baglandiysa altinda "-> M18" ile o da gosterilir
+    (saat sutunu Z'ye gore sirali).  3'ten fazla parca: "+N parca",
+    hepsi ustune gelince cikan ipucunda.  Standardi asan cubuk kirmizi
+    cerceveli.  Excel'e aktarmada 3. ve 4. satira yazilir.
+  - STANDART SURE YUKLE: Excel - Parca no | Operasyon | Standart sure
+    (saat).  Parca 2639M17G02 ya da M17 yazilabilir; bos parca hucresi
+    ustteki parcayi tekrar eder.  Ornek: STANDART_SABLON.xlsx.  Yeni liste
+    ayni parca + operasyonun eskisinin yerine gecer, digerleri kalir.
 
 Okunan sutunlar (baslik metniyle dogrulanir; sutun kaymissa basligindan
 bulunur, bulunamazsa okunmaz - "Yukleme raporu"nda yazar):
   C  Kyt tarihi    I  Work ctr    O  Makina suresi    P  Iscilik
   AB Yaka no       AC Calisan ismi
+  E  Parca no      F  Seri no     G  Operasyon        Z  Saat (sira icin)
 Ara bos satirlar ve tekrar eden baslik satirlari atlanir.  Okunamayan
 her satir sebebiyle birlikte Yukleme raporunda sayilir.
 Okunan dosya turleri: gercek .xls (97-2003), .xlsx, SAP'in HTML/MHTML,
