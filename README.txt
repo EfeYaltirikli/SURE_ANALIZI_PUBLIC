@@ -1,4 +1,4 @@
-SURE ANALIZI 1.0.0  (Qt / PySide6)   created by EYALTIRIKLI
+SURE ANALIZI 1.1.0  (Qt / PySide6)   created by EYALTIRIKLI
 ==========================================================
 
 Ne yapar: SAP cikti(lar)ini (.xls / .xlsx) okur; solda calisanlar, ustte
@@ -9,8 +9,16 @@ tezgahlar (Work ctr), hucrede o kisinin o tezgaha girdigi sure.
     toplami tek sutunda.
   - Isim yaninda TOPLAM (birden fazla gunde Σ = aralik toplami).
   - Sure: Iscilik ya da Makina.
-  - BOYAMA: "Altinda" / "Ustunde" esigi.  Ayri sutunda her GUNUN toplami,
-    Toplam modunda ARALIK toplami boyanir.
+  - "Gunluk toplam" kutusu: GUNLUK TOPLAM grubunu acar / kapatir.
+  - BOYAMA: "Altinda" / "Ustunde" esigi.  Her TEZGAH GIRISI (tablodaki
+    her dolu hucre) esige gore boyanir; toplamlar boyanmaz.
+  - TEZGAH GRUBU: "Grup listesi yukle" ile Excel secilir - ilk satirda
+    grup adlari (ornek: A1 liechti, C1 makino), altlarinda tezgah
+    numaralari.  Bos sutun / bos satir sorun degil.  Grup secilince
+    yalniz o gruptaki tezgahlar gosterilir, toplamlar da yalniz onlardan.
+    Liste bir kere yuklenir, program hatirlar.
+  - KISILER: istenen kisiler isaretlenir, yalniz onlar gosterilir
+    (x ile kaldirilir).  Secim hatirlanir.
   - Baslik tiklaninca siralar (Calisan, Yaka no, TOPLAM, gun toplamlari).
   - Excel'e aktar: ekrandaki tablo, ayni baslik duzeni ve boyamayla.
   - Son yuklenen dosyalar ve ayarlar acilista hatirlanir.
