@@ -1,4 +1,4 @@
-SURE ANALIZI 1.3.0  (Qt / PySide6)   created by EYALTIRIKLI
+SURE ANALIZI 1.3.1  (Qt / PySide6)   created by EYALTIRIKLI
 ==========================================================
 
 Ne yapar: SAP cikti(lar)ini (.xls / .xlsx) okur; solda calisanlar, ustte
@@ -24,16 +24,19 @@ tezgahlar (Work ctr), hucrede o kisinin o tezgaha girdigi sure.
     sil" de var.  Yeni surume gecerken sure_data.db dosyasini yeni exe'nin
     yanina kopyalayin, veriler gelir.
   - PARCA ILERLEMESI (kutu ile acilir/kapanir): tezgah basliginin altinda
-    o gun tezgahta kesilen parca (E sutunu xxxxMYYGxx -> MYY; E bossa ayni
-    seri no'lu (F) baska satirdan; hic yoksa seri no) ve bir cubuk:
-      yesil = o tarihten ONCE o tezgahta o seri + operasyona girilen sure
-      turuncu = O GUN (aralikta) girilen
-      bos = standarda kalan  (standart: parca + operasyon (G sutunu))
+    o gun tezgahta kesilen HER parca: parca kodu (E sutunu xxxxMYYGxx ->
+    MYY; E bossa ayni seri no'lu (F) baska satirdan; hic yoksa seri no),
+    altinda seri no, altinda 3 ESIT kutu (olcek yok, sayilar hep gorunur):
+      yesil  = o tarihten ONCE o tezgahta o seri + operasyona girilen sure
+      turuncu = O GUN (aralikta) girilen sure
+      gri    = standarda kalan.  "?" = bu parca + operasyonun standardi
+               listede yok.  "-3" (kirmizi cerceve) = standardi 3 asti.
     Sure: makina suresi (O); makina 0 olan giriste o girisin iscilik.
-    O gun ikinci bir seri baglandiysa altinda "-> M18" ile o da gosterilir
-    (saat sutunu Z'ye gore sirali).  3'ten fazla parca: "+N parca",
-    hepsi ustune gelince cikan ipucunda.  Standardi asan cubuk kirmizi
-    cerceveli.  Excel'e aktarmada 3. ve 4. satira yazilir.
+    Sira: once standarda ulasan (✓) parcalar, bitis saatlerine gore; sonra
+    yarim kalanlar, baslama saatine gore (saat: Z sutunu).  Ikinci parcadan
+    itibaren basinda "->" var.  Parca ilerlemesi acikken butun tezgah
+    sutunlari ayni genislikte.  Ustune gelince ayrintili ipucu cikar.
+    Excel'e aktarmada 3. satir "M17 (seri)", 4. satir "once + bugun / std".
   - STANDART SURE YUKLE: Excel - Parca no | Operasyon | Standart sure
     (saat).  Parca 2639M17G02 ya da M17 yazilabilir; bos parca hucresi
     ustteki parcayi tekrar eder.  Ornek: STANDART_SABLON.xlsx.  Yeni liste
