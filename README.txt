@@ -1,4 +1,4 @@
-SURE ANALIZI 1.1.0  (Qt / PySide6)   created by EYALTIRIKLI
+SURE ANALIZI 1.2.0  (Qt / PySide6)   created by EYALTIRIKLI
 ==========================================================
 
 Ne yapar: SAP cikti(lar)ini (.xls / .xlsx) okur; solda calisanlar, ustte
@@ -11,7 +11,17 @@ tezgahlar (Work ctr), hucrede o kisinin o tezgaha girdigi sure.
   - Sure: Iscilik ya da Makina.
   - "Gunluk toplam" kutusu: GUNLUK TOPLAM grubunu acar / kapatir.
   - BOYAMA: "Altinda" / "Ustunde" esigi.  Her TEZGAH GIRISI (tablodaki
-    her dolu hucre) esige gore boyanir; toplamlar boyanmaz.
+    her dolu hucre) esige gore boyanir; toplamlar boyanmaz.  Esigin yaninda
+    boyanan girislerin, tabloda gorunen tum girislere orani yazar:
+    "%21,7 (13 / 60 giris) · sure %10,7" (sure = o girislerin suresinin
+    gorunen toplam sureye orani).  Grup / kisi / tarih filtresine uyar.
+  - VERI YUKLE: yuklu verinin yerine gecer.
+  - VERI EKLE: yuklu verinin UZERINE ekler.  Eklenen dosyada zaten yuklu
+    tarihler varsa sorar: "Yenisi" (o tarihler yeni dosyadan), "Eskisi"
+    (o tarihlerde eski veri kalir), "Ikisi de" (ikisi toplanir - ayni
+    cikti tekrar alindiysa sureler iki kat olur).  Yeni tarihler her
+    durumda eklenir.  Program acilista ayni yukleme / ekleme sirasini
+    tekrar okur.
   - TEZGAH GRUBU: "Grup listesi yukle" ile Excel secilir - ilk satirda
     grup adlari (ornek: A1 liechti, C1 makino), altlarinda tezgah
     numaralari.  Bos sutun / bos satir sorun degil.  Grup secilince
